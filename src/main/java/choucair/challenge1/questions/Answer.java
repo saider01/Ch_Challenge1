@@ -5,22 +5,22 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Text;
 
-
 public class Answer implements Question<Boolean> {
-    private String question;
+    private String strSearch;
 
-    public Answer(String question) {
-        this.question=question;
+    public Answer(String strSearch) {
+        this.strSearch=strSearch;
     }
-    public static Answer toThe(String question) {
-        return new Answer(question);
+
+    public static Answer toThe(String strSearch) {
+        return new Answer(strSearch);
     }
 
     @Override
     public Boolean answeredBy(Actor actor) {
         boolean result;
         String checkEmail = Text.of(FinalPage.CHECK_EMAIL).viewedBy(actor).asString();
-        if (question.equals(checkEmail)) {
+        if (strSearch.equals(checkEmail)) {
             result = true;
         }
         else {
